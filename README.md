@@ -5,6 +5,8 @@ Project to learn
 - Node.js
 - Chocolatey (https://chocolatey.org/install)
 - NPM
+- MongoDB 
+- MongoDB Compass
 
 ## CRMGraphQL
 To install package.json
