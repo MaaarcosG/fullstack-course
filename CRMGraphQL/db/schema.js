@@ -10,11 +10,20 @@ const typeDefs = gql`
         email: String
         created: String
     }
+    
+    type Token{
+        token: String
+    }
 
     input UserInput{
         # ! --> hacer obligatorio la variable
         nombre: String!
         apellido: String!
+        email: String!
+        password: String!
+    }
+    
+    input AutenticarInput{
         email: String!
         password: String!
     }
@@ -26,6 +35,7 @@ const typeDefs = gql`
 
     type Mutation{
         newUser (input: UserInput): User
+        autenticationUser(input: AutenticarInput): Token
     }
 `;
 

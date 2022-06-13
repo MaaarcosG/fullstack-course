@@ -1,0 +1,2 @@
+DB_MONGO=mongodb+srv://maaarcosg:twKm0MxtfHHosD4w@cluster0.ctpkrzw.mongodb.net/CRMGraphQL
+SECRET=palabrasecreta
