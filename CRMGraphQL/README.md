@@ -1,8 +1,8 @@
 # Apollo
 
 ## Example New User
-### Operation Example
-```
+### Operation
+```bash
 mutation newUser($input: UserInput){
   newUser(input: $input){
     id
@@ -13,7 +13,7 @@ mutation newUser($input: UserInput){
 }
 ```
 ###  Header Variables
-```
+```rust
 {
   "input": {
     "nombre": "Marcos",
@@ -26,9 +26,9 @@ mutation newUser($input: UserInput){
 
 
 ## Example Hash Password
-### Operation Example
+### Operation
 
-```
+```bash
 mutation autenticationUser($input: AutenticarInput){
   autenticationUser(input: $input) {
     token
@@ -37,11 +37,51 @@ mutation autenticationUser($input: AutenticarInput){
 ```
 
 ###  Header Variables
-```
+```rust
 {
   "input": {
     "email": "email@email.com",
     "password": "1234"
+  }
+}
+```
+
+## Example obtenerUsurio
+### Operation 
+```bash
+query obtenerUsurio($token: String!){
+  obtenerUsurio(token: $token) {
+    id
+  }
+}
+```
+###  Header Variables
+```rust
+{
+  "token": "copiamos el token generado"
+}
+```
+
+## Example newProduct
+### Operation 
+```bash
+mutation NewProduct($input: ProductoInput) {
+  newProduct(input: $input) {
+    id
+    nombre
+    existencia
+    precio
+    created
+  }
+}
+```
+###  Header Variables
+```rust
+{
+  "input": {
+    "nombre": "iPad",
+    "existencia": 100,
+    "precio": 500
   }
 }
 ```
