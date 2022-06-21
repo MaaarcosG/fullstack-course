@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 const Layout = ({ children }) => {
   /* hook de router */
   const router = useRouter();
-  console.log('LOG ',router.pathname)
 
   return (
     <>

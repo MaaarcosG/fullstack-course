@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { gql, useMutation } from "@apollo/client";
+import { from, gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import {mostrarMensaje, errorMensaje } from "../helpers/Message";
 
 const AUTENTICAR_USUARIO = gql`
   mutation autenticationUser($input: AutenticarInput) {
@@ -66,18 +67,10 @@ const Login = () => {
     },
   });
 
-  const mostrarMensaje = () => {
-    return (
-      <div className="bg-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
-        <p>{mensaje}</p>
-      </div>
-    );
-  };
-
   return (
     <>
       <Layout >
-        {mensaje && mostrarMensaje()}
+        {mensaje && mostrarMensaje(mensaje)}
         <h1 className="text-center text-2xl text-white font-light">Login</h1>
         <div className="flex justify-center mt-5">
           <div className="w-full max-w-sm">
@@ -107,10 +100,7 @@ const Login = () => {
               {/* Mensaje de error email */}
 
               {formik.touched.email && formik.errors.email ? (
-                <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ">
-                  <p className="font-bold">Error</p>
-                  <p>{formik.errors.email}</p>
-                </div>
+                errorMensaje(formik.errors.email)
               ) : null}
 
               <div className="mb-4">
@@ -135,10 +125,7 @@ const Login = () => {
               {/* Mensaje de error password */}
 
               {formik.touched.password && formik.errors.password ? (
-                <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ">
-                  <p className="font-bold">Error</p>
-                  <p>{formik.errors.password}</p>
-                </div>
+                errorMensaje(formik.errors.password)
               ) : null}
 
               <input

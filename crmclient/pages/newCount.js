@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { useMutation, gql } from "@apollo/client";
+import { mostrarMensaje, errorMensaje } from "../helpers/Message";
 
 const NUEVA_CUENTA = gql`
   mutation newUser($input: UserInput) {
@@ -81,18 +82,11 @@ const NewCount = () => {
     },
   });
 
-  const mostrarMensaje = () => {
-    return(
-      <div className="bg-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
-        <p>{mensaje}</p>
-      </div>
-    )
-  };
-
+ 
   return (
     <Layout>
 
-      {mensaje && mostrarMensaje()}
+      {mensaje && mostrarMensaje(mensaje)}
 
       <h1 className="text-center text-2xl text-white font-light">
         Crear Nueva Cuenta
@@ -125,10 +119,7 @@ const NewCount = () => {
             {/* Mensaje de error nombre */}
 
             {formik.touched.nombre && formik.errors.nombre ? (
-              <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ">
-                <p className="font-bold">Error</p>
-                <p>{formik.errors.nombre}</p>
-              </div>
+              errorMensaje(formik.errors.nombre)
             ) : null}
 
             <div className="mb-4">
@@ -153,10 +144,7 @@ const NewCount = () => {
             {/* Mensaje de error apellido */}
 
             {formik.touched.apellido && formik.errors.apellido ? (
-              <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ">
-                <p className="font-bold">Error</p>
-                <p>{formik.errors.apellido}</p>
-              </div>
+              errorMensaje(formik.errors.apellido)
             ) : null}
 
             <div className="mb-4">
@@ -181,10 +169,7 @@ const NewCount = () => {
             {/* Mensaje de error email */}
 
             {formik.touched.email && formik.errors.email ? (
-              <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ">
-                <p className="font-bold">Error</p>
-                <p>{formik.errors.email}</p>
-              </div>
+              errorMensaje(formik.errors.email)
             ) : null}
 
             <div className="mb-4">
@@ -209,10 +194,7 @@ const NewCount = () => {
             {/* Mensaje de error password */}
 
             {formik.touched.password && formik.errors.password ? (
-              <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ">
-                <p className="font-bold">Error</p>
-                <p>{formik.errors.password}</p>
-              </div>
+              errorMensaje(formik.errors.password)
             ) : null}
 
             <input
