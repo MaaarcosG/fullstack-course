@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title> CRM - Administracion de Cliente </title>
         <link
           rel="stylesheet"
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
           href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
           rel="stylesheet"
         ></link>
-      </Head>
+      </Head> */}
 
       {router.pathname === "/login" || router.pathname === "/newCount" ? (
         <div className="bg-gray-800 min-h-screen flex flex-col justify-center">
